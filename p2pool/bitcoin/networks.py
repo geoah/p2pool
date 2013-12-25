@@ -193,8 +193,9 @@ nets = dict(
         BLOCK_PERIOD=40, # s targetspacing
         SYMBOL='DGC',
         CONF_FILE_FUNC=lambda: os.path.join(os.path.join(os.environ['APPDATA'], 'digitalcoin') if platform.system() == 'Windows' else os.path.expanduser('~/Library/Application Support/digitalcoin/') if platform.system() == 'Darwin' else os.path.expanduser('~/.digitalcoin'), 'digitalcoin.conf'),
-        BLOCK_EXPLORER_URL_PREFIX='http://altcha.in/block/',
+        BLOCK_EXPLORER_URL_PREFIX='http://dgc.cryptocoinexplorer.com/block/',
         ADDRESS_EXPLORER_URL_PREFIX='http://altcha.in/address/',
+        TX_EXPLORER_URL_PREFIX='http://dgc.cryptocoinexplorer.com/tx/',
         SANE_TARGET_RANGE=(2**256//100000000 - 1, 2**256//1000 - 1),
         DUMB_SCRYPT_DIFF=2**16,
         DUST_THRESHOLD=1e8,
