@@ -45,7 +45,7 @@ nets = dict(
         ANNOUNCE_CHANNEL='#p2pool-alt',
         VERSION_CHECK=lambda v: 50700 <= v < 60000 or 60010 <= v < 60100 or 60400 <= v,
     ),
-    
+
     litecoin=math.Object(
         PARENT=networks.nets['litecoin'],
         SHARE_PERIOD=15, # seconds
@@ -121,6 +121,27 @@ nets = dict(
         ANNOUNCE_CHANNEL='#p2pool-alt',
         VERSION_CHECK=lambda v: True,
         VERSION_WARNING=lambda v: 'Upgrade Terracoin to >= 0.8.0.1!' if v < 80001 else None,
+    ),
+
+    digitalcoin=math.Object(
+        PARENT=networks.nets['digitalcoin'],
+        SHARE_PERIOD=15, # seconds target spacing
+        NEW_SHARE_PERIOD=15, # seconds
+        CHAIN_LENGTH=24*60*60//15, # shares
+        REAL_CHAIN_LENGTH=3*60*60//15, # shares
+        TARGET_LOOKBEHIND=200, # shares coinbase maturity
+        SPREAD=45, # blocks
+        NEW_SPREAD=45, # blocks
+        IDENTIFIER='7696CF5EB2F68C88'.decode('hex'), # Change for Stand Alone Pool
+        PREFIX='4C2307E841C11FDD'.decode('hex'), # Change for Stand Alone Pool
+        P2P_PORT=23610,
+        MIN_TARGET=0,
+        MAX_TARGET=2**256//2**20 - 1,
+        PERSIST=False, # Change to True for Stand Alone Pool
+        WORKER_PORT=25397,
+        BOOTSTRAP_ADDRS='dgc.xpool.net us-east1.cryptovein.com'.split(' '), # Change to '' for Stand Alone Pool
+        ANNOUNCE_CHANNEL='#xpool',
+        VERSION_CHECK=lambda v: True,
     ),
 
 )
